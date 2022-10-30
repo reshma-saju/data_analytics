@@ -19,9 +19,15 @@ mins = int(input("Enter minimum support value: "))
 for i, j in enumerate(itemlist):
     for x, y in enumerate(itemlist):
         if x > i and len(j) == len(y) and j[:len(j)-1]==y[:len(y)-1]:
-            l = []
-            l.extend(j)
-            l.append(y[len(y)-1])
+            l=[]
+            if len(j[0])!=1:
+                l=[x for x in j]
+            else:
+                l=[j]
+            if len(y[0])!=1:
+                l.append(y[len(y)-1])
+            else:
+                l.append(y)
             if l not in itemlist:
                 itemlist.append(l)
 print(itemlist)
